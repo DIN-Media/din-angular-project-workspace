@@ -3,12 +3,12 @@ import {Routes} from '@angular/router';
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'home-page',
     pathMatch: 'full'
   },
   {
-    path: 'home',
-    loadComponent: () => import('./pages/home/home.component').then(item => item.HomeComponent)
+    path: '',
+    loadChildren: () => import('./layouts/home-layout/home.routes').then(item => item.homeRoutes)
   },
   {
     path: 'authenticate',
