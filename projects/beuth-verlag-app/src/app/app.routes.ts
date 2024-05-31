@@ -8,6 +8,7 @@ export const routes: Routes = [
   },
   {
     path: 'home',
+    loadComponent: () => import('./pages/home/home.component').then(item => item.HomeComponent)
   },
   {
     path: 'authenticate',
