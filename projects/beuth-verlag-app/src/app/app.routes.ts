@@ -12,6 +12,7 @@ export const routes: Routes = [
   },
   {
     path: 'authenticate',
+    loadChildren: () => import('./layouts/authentication-layout/authentication.routes').then(item => item.authenticationRoutes)
   },
   {
     path: '**',
