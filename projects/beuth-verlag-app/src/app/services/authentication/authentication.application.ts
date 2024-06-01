@@ -5,6 +5,12 @@ import {AuthenticationStore} from "../../store";
 export class AuthenticationApplication {
   private readonly store = inject(AuthenticationStore);
 
+  /**
+   * to log in user with given userName and password to the server
+   *
+   * @param userName
+   * @param password
+   */
   login(userName: string, password: string): void {
       this.store.logIn({userName, password});
   }
