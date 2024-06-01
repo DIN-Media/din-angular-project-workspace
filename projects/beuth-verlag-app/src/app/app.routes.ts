@@ -7,7 +7,7 @@ import {isAuthenticated} from "./services/authorization/authorization.guard";
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: 'home-page',
+    redirectTo: 'home',
     pathMatch: 'full'
   },
   {
@@ -21,7 +21,7 @@ export const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: 'authenticate/login',
+    redirectTo: 'home', // should redirect to page not found, but not implemented yet
     pathMatch: 'full'
   }
 ]
