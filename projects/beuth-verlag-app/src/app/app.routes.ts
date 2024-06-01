@@ -1,5 +1,9 @@
 import {Routes} from '@angular/router';
+import {isAuthenticated} from "./services/authorization/authorization.guard";
 
+/**
+ * Base Routes for the application.
+ */
 export const routes: Routes = [
   {
     path: '',
@@ -8,6 +12,7 @@ export const routes: Routes = [
   },
   {
     path: '',
+    canActivate: [isAuthenticated],
     loadChildren: () => import('./layouts/home-layout/home.routes').then(item => item.homeRoutes)
   },
   {

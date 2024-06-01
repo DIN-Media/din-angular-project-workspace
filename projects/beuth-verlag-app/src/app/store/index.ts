@@ -25,14 +25,27 @@ const initialState: AuthenticationState = {
 
 // reducer / store
 export const AuthenticationStore = signalStore(
+  /**
+   * To provide the store to the application:
+   *  The store provided in root mean that the store will be provided to all the components in the application.
+   */
   {providedIn: 'root'},
 
+  /**
+   * To set an initial state (value) to the store
+   */
   withState(initialState),
 
+  /**
+   * Signal store computed to check if user is authenticated
+   */
   withComputed(store => ({
-    isAuthenticated: computed(() => store.user())
+    isAuthenticated: computed((): boolean => store.user() !== undefined),
   })),
 
+  /**
+   * Signal store methods to log in user
+   */
   withMethods((store, infra: AuthenticationInfrastructure = inject(AuthenticationInfrastructure)) => (
     {
       logIn: rxMethod<AuthenticateType>(
