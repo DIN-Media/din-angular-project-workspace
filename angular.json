@@ -17,7 +17,6 @@
             "index": "projects/beuth-verlag-app/src/index.html",
             "browser": "projects/beuth-verlag-app/src/main.ts",
             "polyfills": [
-              "zone.js"
             ],
             "tsConfig": "projects/beuth-verlag-app/tsconfig.app.json",
             "assets": [
@@ -85,8 +84,6 @@
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
             "polyfills": [
-              "zone.js",
-              "zone.js/testing"
             ],
             "tsConfig": "projects/beuth-verlag-app/tsconfig.spec.json",
             "assets": [
