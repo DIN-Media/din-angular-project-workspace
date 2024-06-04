@@ -24,6 +24,16 @@
               {
                 "glob": "**/*",
                 "input": "projects/beuth-verlag-app/public"
+              },
+              {
+                "glob": "**/*",
+                "input": "projects/beuth-verlag-app/src/assets/",
+                "output": "/assets/"
+              },
+              {
+                "glob": "favicon.ico",
+                "input": "projects/beuth-verlag-app/src/",
+                "output": "/"
               }
             ],
             "styles": [
@@ -83,6 +93,16 @@
               {
                 "glob": "**/*",
                 "input": "projects/beuth-verlag-app/public"
+              },
+              {
+                "glob": "**/*",
+                "input": "projects/beuth-verlag-app/src/assets/",
+                "output": "/assets/"
+              },
+              {
+                "glob": "favicon.ico",
+                "input": "projects/beuth-verlag-app/src/",
+                "output": "/"
               }
             ],
             "styles": [
