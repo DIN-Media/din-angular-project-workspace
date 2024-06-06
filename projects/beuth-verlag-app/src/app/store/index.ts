@@ -3,27 +3,42 @@ import {patchState, signalStore, withComputed, withMethods, withState} from "@ng
 import {rxMethod} from "@ngrx/signals/rxjs-interop";
 import {concatMap, pipe, tap} from "rxjs";
 import {computed, inject} from "@angular/core";
-import {AuthenticationInfrastructure} from "../services/authentication/authentication.infrastructure";
+import {AuthenticationInfrastructure} from "../core/authentication/authentication.infrastructure";
 import {tapResponse} from "@ngrx/operators";
 
-// state to be created
+
+// ::: State to be created
+
+/**
+ * State of the store
+ */
 export interface AuthenticationState {
   user: User | undefined | null,
   isLoading: boolean;
 }
 
 export type AuthenticateType = {
-  userName: string,
+  username: string,
   password: string
 }
 
-// initial state
+
+// ::: Initial State
+
+/**
+ * Initial state of the store
+ */
 const initialState: AuthenticationState = {
   user: undefined,
   isLoading: false
 }
 
-// reducer / store
+
+// ::: Store
+
+/**
+ * Store to manage authentication state
+ */
 export const AuthenticationStore = signalStore(
   /**
    * To provide the store to the application:
@@ -46,13 +61,15 @@ export const AuthenticationStore = signalStore(
   /**
    * Signal store methods to log in user
    */
-  withMethods((store, infra: AuthenticationInfrastructure = inject(AuthenticationInfrastructure)) => (
+  withMethods((
+    store,
+    infra: AuthenticationInfrastructure = inject(AuthenticationInfrastructure)) => (
     {
       logIn: rxMethod<AuthenticateType>(
         pipe(
-          tap(() => patchState(store, { isLoading: true })),
+          tap(() => patchState(store, {isLoading: true})),
           concatMap((input: AuthenticateType) => {
-            return infra.login(input.userName, input.password).pipe(
+            return infra.login(input.username, input.password).pipe(
               tapResponse({
                 next: (user: User) => patchState(store, {user, isLoading: false}),
                 error: () => patchState(store, {user: undefined, isLoading: false})

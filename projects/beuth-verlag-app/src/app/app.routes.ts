@@ -1,5 +1,5 @@
 import {Routes} from '@angular/router';
-import {isAuthenticated} from "./services/authorization/authorization.guard";
+import {isAuthenticated} from "./core/authorization/authorization.guard";
 
 /**
  * Base Routes for the application.

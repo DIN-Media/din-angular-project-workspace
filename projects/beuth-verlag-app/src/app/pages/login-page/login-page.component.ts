@@ -4,7 +4,7 @@ import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import {MatButtonModule} from "@angular/material/button";
 import {MatIconModule} from "@angular/material/icon";
-import {AuthenticationApplication} from "../../services/authentication/authentication.application";
+import {AuthenticationApplication} from "../../core/authentication/authentication.application";
 
 @Component({
   selector: 'app-login-page',
@@ -27,13 +27,6 @@ export class LoginPageComponent {
   })
 
   /**
-   * To log in user with given userName and password to the server.
-   */
-  login(): void {
-    this.authApplication.login(this.email.value, this.password.value);
-  }
-
-  /**
    * To get email form
    */
   get email(): FormControl {
@@ -51,6 +44,13 @@ export class LoginPageComponent {
    * To check if form is valid.
    */
   get isValid(): boolean {
-      return this.loginForm.valid;
+    return this.loginForm.valid;
+  }
+
+  /**
+   * To log in user with given userName and password to the server.
+   */
+  login(): void {
+    this.authApplication.login(this.email.value, this.password.value);
   }
 }

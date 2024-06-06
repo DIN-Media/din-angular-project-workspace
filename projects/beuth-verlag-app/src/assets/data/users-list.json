@@ -1,0 +1,50 @@
+[
+  {
+    "id": "3b5cf476-c4f7-48e3-83f3-ebddc2a05fe9",
+    "username": "sankara@email.de",
+    "password": "sankara#01",
+    "firstName": "Thomas",
+    "lastName": "Sankara",
+    "gender": "m",
+    "session": {
+      "id": "3b5cf476-c4f7-48e3-83f3-ebddc2a05fe9",
+      "accessToken": "980c324b-d566-456d-acca-978d1ed4b785"
+    }
+  },
+  {
+    "id": "3b5cf476-c4f7-48e3-83f3-ebddc2a05fe9",
+    "username": "mueller@email.de",
+    "password": "mueller#01",
+    "firstname": "Paul",
+    "lastName": "Mueller",
+    "gender": "m",
+    "session": {
+      "id": "3b5cf476-c4f7-48e3-83f3-ebddc2a05fe9",
+      "accessToken": "980c324b-d566-456d-acca-978d1ed4b785"
+    }
+  },
+  {
+    "id": "3a5b3e0b-aa64-4a7f-87a7-f831d195851a",
+    "username": "makeba@email.de",
+    "password": "makeba#01",
+    "firstName": "Miriam",
+    "lastName": "Makeba",
+    "gender": "f",
+    "session": {
+      "id": "3a5b3e0b-aa64-4a7f-87a7-f831d195851a",
+      "accessToken": "980c324b-d566-456d-acca-978d1ed4b785"
+    }
+  },
+  {
+    "id": "f34531b2-2b83-4255-8add-4ea287160e35",
+    "username": "harks@email.de",
+    "password": "harks#01",
+    "firstName": "Mia",
+    "lastName": "Harks",
+    "gender": "o",
+    "session": {
+      "id": "f34531b2-2b83-4255-8add-4ea287160e35",
+      "accessToken": "980c324b-d566-456d-acca-978d1ed4b785"
+    }
+  }
+]
