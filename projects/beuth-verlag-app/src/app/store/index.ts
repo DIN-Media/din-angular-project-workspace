@@ -1,13 +1,16 @@
-import {User} from "../models/user";
+import {User} from "../models/user.index";
 import {patchState, signalStore, withComputed, withMethods, withState} from "@ngrx/signals";
 import {rxMethod} from "@ngrx/signals/rxjs-interop";
 import {concatMap, pipe, tap} from "rxjs";
 import {computed, inject} from "@angular/core";
 import {AuthenticationInfrastructure} from "../core/authentication/authentication.infrastructure";
 import {tapResponse} from "@ngrx/operators";
+import {Router} from "@angular/router";
+import {SessionService} from "../core/authentication/session.service";
+import {RoutingPaths} from "../core/const";
 
 
-// ::: State to be created
+// ::: State to be created :::
 
 /**
  * State of the store
@@ -23,7 +26,7 @@ export type AuthenticateType = {
 }
 
 
-// ::: Initial State
+// ::: Initial State :::
 
 /**
  * Initial state of the store
@@ -34,7 +37,7 @@ const initialState: AuthenticationState = {
 }
 
 
-// ::: Store
+// ::: Store :::
 
 /**
  * Store to manage authentication state
@@ -52,10 +55,12 @@ export const AuthenticationStore = signalStore(
   withState(initialState),
 
   /**
-   * Signal store computed to check if user is authenticated
+   * Signal store computed to check if user is authenticated, to redirect to login page if not.
    */
-  withComputed(store => ({
-    isAuthenticated: computed((): boolean => store.user() !== undefined),
+  withComputed((
+    store,
+    session: SessionService = inject(SessionService)) => ({
+    isAuthenticated: computed((): boolean => session.isAuthenticated()),
   })),
 
   /**
@@ -63,6 +68,7 @@ export const AuthenticationStore = signalStore(
    */
   withMethods((
     store,
+    router: Router = inject(Router),
     infra: AuthenticationInfrastructure = inject(AuthenticationInfrastructure)) => (
     {
       logIn: rxMethod<AuthenticateType>(
@@ -71,11 +77,39 @@ export const AuthenticationStore = signalStore(
           concatMap((input: AuthenticateType) => {
             return infra.login(input.username, input.password).pipe(
               tapResponse({
-                next: (user: User) => patchState(store, {user, isLoading: false}),
+                next: (user: User): void => {
+                  patchState(store, {user: user, isLoading: false})
+                  router.navigate([RoutingPaths.HOME]).then()
+                },
                 error: () => patchState(store, {user: undefined, isLoading: false})
               })
             )
           })
+        )
+      )
+    }
+  )),
+
+  /**
+   * Signal store methods to log out user
+   */
+  withMethods((
+    store,
+    router: Router = inject(Router),
+    infra: AuthenticationInfrastructure = inject(AuthenticationInfrastructure)) => (
+    {
+      logOut: rxMethod<void>(
+        pipe(
+          tap(() => patchState(store, {isLoading: true})),
+          concatMap(() => infra.logout().pipe(
+            tapResponse({
+              next: (): void => {
+                patchState(store, {user: undefined, isLoading: false})
+                router.navigate([RoutingPaths.AUTH_LOGIN]).then()
+              },
+              error: () => patchState(store, {user: undefined, isLoading: false})
+            })
+          ))
         )
       )
     }

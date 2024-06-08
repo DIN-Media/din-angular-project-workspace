@@ -5,19 +5,18 @@ import {MatInputModule} from "@angular/material/input";
 import {MatButtonModule} from "@angular/material/button";
 import {MatIconModule} from "@angular/material/icon";
 import {AuthenticationApplication} from "../../core/authentication/authentication.application";
+import {SpinnerComponent} from "../../core/components/spinner/spinner.component";
 
 @Component({
   selector: 'app-login-page',
   standalone: true,
   imports: [
-    ReactiveFormsModule, MatFormFieldModule, MatInputModule, FormsModule, MatIconModule, MatButtonModule
+    ReactiveFormsModule, MatFormFieldModule, MatInputModule, FormsModule, MatIconModule, MatButtonModule, SpinnerComponent
   ],
   templateUrl: './login-page.component.html',
   styleUrl: './login-page.component.css'
 })
 export class LoginPageComponent {
-  private readonly authApplication: AuthenticationApplication = inject(AuthenticationApplication);
-
   /**
    * Form to log in.
    */
@@ -25,6 +24,8 @@ export class LoginPageComponent {
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', [Validators.required])
   })
+
+  private readonly authApplication: AuthenticationApplication = inject(AuthenticationApplication);
 
   /**
    * To get email form
@@ -53,4 +54,5 @@ export class LoginPageComponent {
   login(): void {
     this.authApplication.login(this.email.value, this.password.value);
   }
+
 }

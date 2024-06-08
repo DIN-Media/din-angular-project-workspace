@@ -1,1 +1,10 @@
+form {
+  display: flex;
+  justify-content: center;
+  padding: 30px;
+  height: 100%;
+}
 
+mat-form-field, button {
+    margin-left: 10px;
+}

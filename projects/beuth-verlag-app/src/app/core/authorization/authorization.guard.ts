@@ -1,24 +1,24 @@
 import {ActivatedRouteSnapshot, CanActivateFn, Router, RouterStateSnapshot} from "@angular/router";
 import {inject} from "@angular/core";
-import {SessionService} from "../authentication/session.service";
+import {AuthenticationApplication} from "../authentication/authentication.application";
+import {RoutingPaths} from "../const";
 
 /**
  * Guard that checks if the user is authenticated.
  *
  * @param route
  * @param state
- * @param session
+ * @param application
  * @param router
  */
 export const isAuthenticated: CanActivateFn = (
   route: ActivatedRouteSnapshot,
   state: RouterStateSnapshot,
-  session: SessionService = inject(SessionService),
+  application: AuthenticationApplication = inject(AuthenticationApplication),
   router: Router = inject(Router),
 ): Promise<boolean> | boolean => {
 
-  return session.isAuthenticated() || router.navigate(['/authenticate/login'], {queryParams: {returnUrl: state.url}})
-
+  return application.isAuthenticated || router.navigate([RoutingPaths.AUTH_LOGIN], {queryParams: {returnUrl: state.url}})
 }
 
 

@@ -1,17 +1,22 @@
 <form [formGroup]="loginForm" (submit)="login()">
+  <!-- Email (username) input -->
   <mat-form-field appearance="outline">
     <mat-label>Enter your email</mat-label>
     <input matInput placeholder="pat@example.com" [formControl]="email">
     <mat-icon matSuffix>email</mat-icon>
   </mat-form-field>
 
+  <!-- Password input -->
   <mat-form-field appearance="outline">
     <mat-label>Enter your password</mat-label>
-    <input matInput placeholder="****" [formControl]="password" type="password">
+    <input matInput placeholder="********" [formControl]="password" type="password">
     <mat-icon matSuffix>visibility_off</mat-icon>
   </mat-form-field>
 
+  <!-- Send button -->
   <button mat-flat-button color="primary" [disabled]="! isValid">
     Log in
   </button>
 </form>
+
+<app-spinner/>
