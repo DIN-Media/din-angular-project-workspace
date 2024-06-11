@@ -1,10 +1,213 @@
-form {
+.box {
   display: flex;
-  justify-content: center;
-  padding: 30px;
-  height: 100%;
+  flex-direction: column;
+  padding: 42px 34px 22px;
+  font-family: Inter, sans-serif;
+  background-color: rgba(0, 156, 222, 0.05);
 }
 
-mat-form-field, button {
-    margin-left: 10px;
+@media (max-width: 991px) {
+  .box {
+    padding: 30px;
+  }
+}
+
+
+/* ::: HEADER ::: */
+
+#din-media-logo {
+  background-color: #003F64;
+  aspect-ratio: 2.7;
+  object-fit: fill;
+  max-width: 100%;
+}
+
+@media (max-width: 991px) {
+  #din-media-logo {
+    margin-top: 20px;
+  }
+}
+
+/* ::: BODY ::: */
+
+.body {
+  display: flex;
+  gap: 10em;
+}
+
+@media (max-width: 991px) {
+  .body {
+    flex-direction: column;
+    align-items: stretch;
+    max-width: 100%;
+    gap: 0;
+  }
+}
+
+#welcome-text {
+  flex-direction: column;
+  line-height: normal;
+  display: flex;
+  width: 60%;
+}
+
+@media (max-width: 991px) {
+  #welcome-text {
+    margin-top: 5em;
+    width: 100%;
+  }
+}
+
+#welcome-text > p:first-child {
+  font-size: 32px;
+  color: #000;
+  margin-top: 20%;
+}
+
+#welcome-text > p:last-child {
+  font-size: 24px;
+  color: #7d7d7d;
+  margin-top: 10px;
+}
+
+@media (max-width: 991px) {
+  #welcome-text > p:first-child,
+  #welcome-text > p:last-child {
+    max-width: 100%;
+    margin-top: 40px;
+  }
+}
+
+#card {
+  display: flex;
+  flex-direction: column;
+  padding-top: 2%;
+  width: 40%;
+}
+
+@media (max-width: 991px) {
+  #card {
+    width: 100%;
+  }
+}
+
+mat-card {
+  flex-direction: column;
+  padding: 36px 30px;
+  display: flex;
+  object-fit: fill;
+  width: 100%;
+  flex-grow: 1;
+}
+
+@media (max-width: 991px) {
+  mat-card {
+    max-width: 100%;
+    margin-top: 40px;
+  }
+}
+
+mat-card-title {
+  padding-bottom: 4em;
+}
+
+mat-card-title > p:first-child {
+  font-size: 40px;
+  color: #000;
+}
+
+mat-card-title > p:last-child {
+  font-size: 16px;
+  color: #7d7d7d;
+  margin-top: -1em;
+}
+
+@media (max-width: 991px) {
+  mat-card-title > p:first-child,
+  mat-card-title > p:last-child {
+    max-width: 100%;
+  }
+}
+
+mat-card-content {
+    padding: 0;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+#reset-password {
+  color: #0070a3;
+  font-size: 14px;
+}
+
+mat-card-footer {
+  align-self: start;
+  padding-top: 8em;
+  display: flex;
+  width: 100%;
+}
+
+#signup {
+  flex-basis: auto;
+  align-self: end;
+  font-size: 14px;
+  flex-grow: 1;
+}
+
+#signup > span {
+  color: #0070a3;
+}
+
+
+/* ::: FOOTER ::: */
+
+.footer-items {
+  margin-top: 7%;
+  display: flex;
+  width: 100%;
+  gap: 20px;
+}
+@media (max-width: 991px) {
+  .footer-items {
+    max-width: 100%;
+    flex-wrap: wrap;
+    margin-top: 40px;
+  }
+}
+@media (max-width: 640px) {
+  .footer-items {
+    margin-top: 61px;
+  }
+}
+
+#copyright {
+  flex-basis: auto;
+  font-size: 14px;
+  flex-grow: 1;
+}
+@media (max-width: 640px) {
+  #copyright {
+    font-size: 10px;
+  }
+}
+
+.hyperlinks {
+  display: flex;
+  gap: 9px;
+  color: #0070a3;
+}
+
+@media (max-width: 640px) {
+  .hyperlinks {
+    margin-top: 29px;
+    font-size: 15px;
+  }
+}
+
+.link-separator {
+  background-color: #0070a3;
+  width: 2px;
+  height: 19px;
 }

@@ -1,0 +1,26 @@
+[
+  {
+    "name": "Reset Password",
+    "url": "https://www.dinmedia.de/de/user-management/recover-pw"
+  },
+  {
+    "name": "Impressum",
+    "url": "https://www.dinmedia.de/de/impressum"
+  },
+  {
+    "name": "Über Uns",
+    "url": "https://www.dinmedia.de"
+  },
+  {
+    "name": "Kontakt",
+    "url": "https://support.dinmedia.de/de/support/solutions/articles/80000943954-rufen-sie-uns-an-"
+  },
+  {
+    "name": "AGB",
+    "url": "https://www.dinmedia.de/de/agb"
+  },
+  {
+    "name": "FAQ",
+    "url": "https://support.dinmedia.de/de/support/home"
+  }
+]

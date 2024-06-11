@@ -8,3 +8,17 @@ export class RoutingPaths {
 export class PageNames {
   static readonly BASE_NAME: string = 'DIN Beuth Verlag - '
 }
+
+export class ErrorType {
+  static readonly REQUIRED: string = 'required';
+    static readonly EMAIL: string = 'email';
+}
+
+export class ErrorMessage {
+  // Email
+  static readonly EMAIL_REQUIRED: string = 'E-Mail erforderlich';
+  static readonly EMAIL_INVALID: string = 'E-Mail ungültig';
+
+  // Password
+  static readonly PASSWORD_REQUIRED: string = 'Passwort erforderlich';
+}
