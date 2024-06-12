@@ -37,12 +37,12 @@
   font-size: 24px;
 }
 
-#newsletter > button {
+#newsletter > a > button {
   margin-top: -0.7em;
   padding: 19px 58px;
 }
 @media (max-width: 991px) {
-  #newsletter > button {
+  #newsletter > a > button {
     padding: 0 20px;
   }
 }

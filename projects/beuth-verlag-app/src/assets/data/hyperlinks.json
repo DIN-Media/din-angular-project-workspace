@@ -1,5 +1,9 @@
 [
   {
+    "name": "Newsletters",
+    "url": "https://www.dinmedia.de/de/e-mail-informationen"
+  },
+  {
     "name": "Reset Password",
     "url": "https://www.dinmedia.de/de/user-management/recover-pw"
   },

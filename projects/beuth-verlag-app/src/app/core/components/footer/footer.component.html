@@ -3,7 +3,9 @@
     <!-- Newsletter -->
     <div id="newsletter">
       <p class="text-bold-800">Newsletter</p>
-      <button class="text-bold-400">Newsletter abonnieren</button>
+      <a  href="{{getNewsletterLink.url}}" target="_blank">
+        <button class="text-bold-400">Newsletter abonnieren</button>
+      </a>
     </div>
 
     <!-- Social Medias -->
@@ -26,10 +28,10 @@
     <p id="copyright">© COPYRIGHT 2024 - DIN MEDIA GMBH</p>
     <div class="hyperlinks">
       @for (link of hyperlinks; track link; let index = $index; let last = $last) {
-        @if (link.name != resetPasswordText) {
+        @if (!excludedLinks.includes(link.name)) {
           <a class="text-deco-none" id="link{{index}}" href="{{link.url}}" target="_blank">{{ link.name }}</a>
         }
-        @if (link.name != resetPasswordText && !last) {
+        @if (!excludedLinks.includes(link.name) && !last) {
           <span class="link-separator"></span>
         }
       }
