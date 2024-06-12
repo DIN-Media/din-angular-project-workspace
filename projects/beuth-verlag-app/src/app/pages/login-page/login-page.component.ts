@@ -15,13 +15,14 @@ import {merge} from "rxjs";
 import {takeUntilDestroyed} from "@angular/core/rxjs-interop";
 import {ErrorMessage, ErrorType} from "../../core/const";
 import {MatTooltipModule} from "@angular/material/tooltip";
+import {DinLogoComponent} from "../../core/components/din-logo/din-logo.component";
 
 @Component({
   selector: 'app-login-page',
   standalone: true,
   imports: [
     ReactiveFormsModule, MatFormFieldModule, MatInputModule, FormsModule, MatIconModule, MatButtonModule,
-    SpinnerComponent, NgOptimizedImage, MatCardModule, MatTooltipModule
+    SpinnerComponent, NgOptimizedImage, MatCardModule, MatTooltipModule, DinLogoComponent
   ],
   templateUrl: './login-page.component.html',
   styleUrl: './login-page.component.css'

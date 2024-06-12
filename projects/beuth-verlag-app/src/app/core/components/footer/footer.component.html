@@ -1,3 +1,38 @@
-<footer>
-  <p>footer works!</p>
-</footer>
+<div class="footer">
+  <div class="footer-row">
+    <!-- Newsletter -->
+    <div id="newsletter">
+      <p class="text-bold-800">Newsletter</p>
+      <button class="text-bold-400">Newsletter abonnieren</button>
+    </div>
+
+    <!-- Social Medias -->
+    <div id="social-media-links">
+      @for (item of socialMedias; track item) {
+        <a id="{{item.name.toLowerCase()}}-button" href="{{item.url}}" target="_blank">
+          <img
+            loading="lazy"
+            alt="{{item.name.toLowerCase()}}-button"
+            width="38" height="38"
+            class="pointer"
+            ngSrc="assets/icons/{{item.name.toLowerCase()}}-icon.png"/>
+        </a>
+      }
+    </div>
+  </div>
+
+  <!-- Copyright & Hyperlinks -->
+  <div class="footer-items">
+    <p id="copyright">© COPYRIGHT 2024 - DIN MEDIA GMBH</p>
+    <div class="hyperlinks">
+      @for (link of hyperlinks; track link; let index = $index; let last = $last) {
+        @if (link.name != resetPasswordText) {
+          <a class="text-deco-none" id="link{{index}}" href="{{link.url}}" target="_blank">{{ link.name }}</a>
+        }
+        @if (link.name != resetPasswordText && !last) {
+          <span class="link-separator"></span>
+        }
+      }
+    </div>
+  </div>
+</div>

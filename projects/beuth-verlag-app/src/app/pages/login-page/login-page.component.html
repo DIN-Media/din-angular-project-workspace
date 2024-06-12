@@ -1,10 +1,6 @@
 <div class="box">
-  <!-- Logo -->
-  <img
-    alt="din-media-logo"
-    height="44"
-    id="din-media-logo"
-    loading="lazy" ngSrc="assets/logos/din-media-logo-invers-data.png" width="169"/>
+  <!-- DIN Logo -->
+  <app-din-logo/>
 
   <!-- Body -->
   <div class="body">
@@ -43,7 +39,7 @@
             <!-- Password input -->
             <mat-form-field appearance="outline" id="password">
               <mat-label>Passwort</mat-label>
-              <input [formControl]="password" matInput placeholder="********" type="password">
+              <input [formControl]="password" matInput placeholder="********" [type]="hidePwd ? 'password' : 'text'">
               <mat-icon (click)="hidePwd = !hidePwd" class="pointer" matSuffix
                         matTooltip='{{hidePwd ? "zeigen" : "verbergen"}}'>
                 {{ hidePwd ? "visibility_off" : "visibility" }}
@@ -63,9 +59,9 @@
         </mat-card-content>
         <mat-card-footer>
           <!-- Sign up message -->
-          <p id="signup">
-            Neu auf dieser Website? <span class="text-bold-700">Registrieren</span>
-          </p>
+          <a id="signup">
+            Neu auf dieser Website? <span class="text-bold-700">Registrieren</span> <!-- Todo: add chose dummy user -->
+          </a>
           <!-- Login button -->
           <button (click)="login()" [disabled]="!isValid" id="login-button">
             Jetzt anmelden

@@ -1,5 +1,60 @@
 header {
-  background: #2D92AB;
-  padding: 1em;
-  text-align: right;
+  justify-content: space-between;
+  font-family: Inter, sans-serif;
+  background-color: #003f64;
+  text-align: center;
+  display: flex;
+  gap: 10em;
+  color: white;
+  font-size: 18px;
+  padding: 8px 48px;
 }
+@media (max-width: 991px) {
+  header {
+    max-width: 100%;
+    flex-wrap: wrap;
+    gap: unset;
+    white-space: initial;
+    padding: 0 20px;
+  }
+}
+
+app-din-logo {
+    margin-top: 5px;
+}
+
+#header-navbar {
+  align-self: center;
+  display: flex;
+  gap: 3em;
+  justify-content: space-between;
+}
+@media (max-width: 991px) {
+  #header-navbar {
+    white-space: initial;
+    gap: 1.5em;
+  }
+}
+
+#profile-group {
+  align-self: center;
+  display: flex;
+  gap: 10px;
+  padding: 5px;
+}
+#profile-group:hover {
+  background-color: #6a1847;
+}
+@media (max-width: 991px) {
+  #profile-group {
+    white-space: initial;
+  }
+}
+
+#profile-group > span {
+  align-self: center;
+}
+
+/*#logout-button {*/
+/*  background-color: unset;*/
+/*}*/

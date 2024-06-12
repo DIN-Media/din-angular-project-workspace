@@ -1,6 +1,18 @@
+<header class="text-bold-700">
+  <!--  DIN Logo  -->
+  <app-din-logo/>
 
-<header>
-  <button mat-flat-button color="primary" (click)="logout()">
-    Log out
-  </button>
+    <!--  Navbar  -->
+  <div id="header-navbar">
+    <!--  User Profile  -->
+    <div id="profile-group" class="pointer" matTooltip="zu meinem Profil">
+      <img ngSrc="assets/icons/person-icon.png" alt="profile-icon" width="28" height="28">
+      <span>Profil</span>
+    </div>
+
+    <!--  Logout   -->
+    <button mat-icon-button matTooltip="zum Abmelden klicken" id="logout-button" (click)="logout()">
+      <img ngSrc="assets/icons/logout-icon.png" alt="logout-icon" width="38" height="38">
+    </button>
+  </div>
 </header>

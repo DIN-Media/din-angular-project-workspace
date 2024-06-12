@@ -3,12 +3,19 @@ body {
 }
 
 button {
-  justify-content: center;
+  transition: .25s ease-in-out 0s;
+  display: inline-block;
   text-align: center;
-  padding: 16px 29px;
-  background-color: #0070a3;
-  color: #fff;
   cursor: pointer;
+  background-color: #0070a3;
+  color: white;
+  border: 0;
+  font-weight: 500;
+  line-height: 18px;
+  max-width: 100%;
+  min-height: 50px;
+  padding: 15px;
+  width: auto;
 }
 
 button:disabled {
@@ -17,12 +24,16 @@ button:disabled {
   cursor: default;
 }
 
-button:not(:disabled):hover {
+button:enabled:hover {
   background-color: #6a1847;
 }
 
 .text-deco-none {
   text-decoration: none;
+}
+
+.text-bold-800 {
+  font-weight: 800;
 }
 
 .text-bold-700 {
