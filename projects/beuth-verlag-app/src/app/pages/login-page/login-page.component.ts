@@ -16,6 +16,9 @@ import {takeUntilDestroyed} from "@angular/core/rxjs-interop";
 import {ErrorMessage, ErrorType} from "../../core/const";
 import {MatTooltipModule} from "@angular/material/tooltip";
 import {DinLogoComponent} from "../../core/components/din-logo/din-logo.component";
+import {MatDialog, MatDialogRef} from "@angular/material/dialog";
+import {DummyUsersModalComponent} from "../../core/modals/dummy-users-modal/dummy-users-modal.component";
+import {User} from "../../models/user.index";
 
 @Component({
   selector: 'app-login-page',
@@ -44,7 +47,7 @@ export class LoginPageComponent {
 
   private readonly authApplication: AuthenticationApplication = inject(AuthenticationApplication);
 
-  constructor() {
+  constructor(public dialog: MatDialog) {
     // to update the email error message
     merge(this.email.statusChanges, this.email.valueChanges)
       .pipe(takeUntilDestroyed())
@@ -81,6 +84,23 @@ export class LoginPageComponent {
     return this.hyperlinks.find((hyperlink: Hyperlink): boolean => hyperlink.name === this.resetPasswordText)?.url
   }
 
+
+  /**
+   * To open dummy user modal, to select dummy user to log in.
+   */
+  zuOpenDummyUserModal(): void {
+    const dialogRef: MatDialogRef<DummyUsersModalComponent> = this.dialog.open(DummyUsersModalComponent, {
+        disableClose: true
+    });
+
+    dialogRef.afterClosed().subscribe((selectedUser: User): void => {
+        if (selectedUser) {
+            this.email.setValue(selectedUser.username);
+            this.password.setValue(selectedUser.password);
+        }
+    });
+  }
+
   /**
    * To log in user with given userName and password to the server.
    */
@@ -88,6 +108,11 @@ export class LoginPageComponent {
     this.authApplication.login(this.email.value, this.password.value);
   }
 
+  /**
+   * To update error message based on the input name.
+   * @param inputName
+   * @private
+   */
   private updateErrorMessage(inputName: string): void {
     if (inputName === this.inputNames[0]) {
       this.emailErrorMessage = this.email.hasError(ErrorType.REQUIRED)
@@ -102,5 +127,4 @@ export class LoginPageComponent {
         : undefined
     }
   }
-
 }

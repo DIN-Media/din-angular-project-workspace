@@ -60,7 +60,10 @@
         <mat-card-footer>
           <!-- Sign up message -->
           <a id="signup">
-            Neu auf dieser Website? <span class="text-bold-700">Registrieren</span> <!-- Todo: add chose dummy user -->
+            Neu auf dieser Website?
+            <span class="text-bold-700 pointer" (click)="zuOpenDummyUserModal()" matTooltip="click um einen Dummy-Konto zu venwenden">
+              Dummy-Konto
+            </span>
           </a>
           <!-- Login button -->
           <button (click)="login()" [disabled]="!isValid" id="login-button">

@@ -1,0 +1,36 @@
+<!-- Header -->
+<h2 mat-dialog-title>Dummy-Konto</h2>
+
+<!-- Body -->
+<mat-dialog-content>
+  Einen dummy Benutzer wählen, um sich einzuloggen
+
+
+  <mat-nav-list>
+    @for (user of users; track user) {
+      <mat-list-item
+        id="user_{{user.id}}"
+        (click)="selectUser(user)"
+        [activated]="user.id === selectedUser?.id">
+        <a matListItemTitle>
+          @if (user.gender?.toLowerCase() === Gender.MALE.toLowerCase()) {
+            <span>Herr</span>
+          }
+          @if (user.gender?.toLowerCase() === Gender.FEMALE.toLowerCase()) {
+            <span>Frau</span>
+          }
+
+          {{user.firstName}} {{user.lastName}}
+        </a>
+      </mat-list-item>
+    }
+  </mat-nav-list>
+</mat-dialog-content>
+
+<!-- Footer -->
+<mat-dialog-actions>
+  <mat-action-list>
+    <button id="cancel-button" (click)="undo()">Abbrechen</button>
+    <button id="confirmation-button" (click)="save()" [disabled]="!selectedUser">Bestätigen</button>
+  </mat-action-list>
+</mat-dialog-actions>

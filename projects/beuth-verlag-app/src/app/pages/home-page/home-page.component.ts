@@ -4,7 +4,7 @@ import {SpinnerComponent} from "../../core/components/spinner/spinner.component"
 
 import dataset from "../../../assets/data/users-list.json";
 import {SessionService} from "../../core/authentication/session.service";
-import {User} from "../../models/user.index";
+import {Gender, User} from "../../models/user.index";
 
 @Component({
   selector: 'app-home-page',
@@ -26,4 +26,6 @@ export class HomePageComponent {
     const userId: string | null = this.session.getUserId();
     return this.users.find((user: User): boolean => user.id === userId);
   }
+
+  protected readonly Gender = Gender;
 }

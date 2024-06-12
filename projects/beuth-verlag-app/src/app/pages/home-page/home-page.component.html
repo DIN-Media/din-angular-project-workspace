@@ -1,6 +1,14 @@
 <div class="box">
   <div id="welcome-text">
-    <p class="text-bold-700">Willkommen bei Beuth Verlag, {{currentUser?.firstName}}!</p>
+    <p class="text-bold-700">Willkommen bei Beuth Verlag,
+      @if (currentUser?.gender?.toLowerCase() === Gender.MALE.toLowerCase()) {
+        <span>Herr</span>
+      }
+      @if (currentUser?.gender?.toLowerCase() === Gender.FEMALE.toLowerCase()) {
+        <span>Frau</span>
+      }
+      {{currentUser?.firstName}} {{currentUser?.lastName}}!</p>
+
     <p class="text-bold-400">
       Wir freuen uns, Sie in unserer Gemeinschaft von Fachleuten aus
       Industrie, Wissenschaft, Handel, Dienstleistungsgewerbe, öffentlicher
