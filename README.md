@@ -6,6 +6,17 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
+### Manual testing using on-board users
+
+Once you have run the application and followed the steps above, you will need to log in as follows:
+
+1. click on the `Dummy-Konto` hypertext link in the inline footer of the login card,
+2. select an account by clicking on the name of the account you wish to use,
+3. confirm your choice by clicking on the `Bestätigen` button.
+4. The credentials of the chosen account will be automatically filled in the fields `Email` and `Passwort`.
+5. All you have to do now is click on the `Jetzt anmelden` button to log in.
+
+
 ## Code scaffolding
 
 Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
