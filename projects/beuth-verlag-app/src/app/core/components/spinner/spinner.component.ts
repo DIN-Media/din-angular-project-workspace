@@ -1,4 +1,4 @@
-import {Component, inject} from '@angular/core';
+import {Component, inject, input, InputSignal} from '@angular/core';
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import {AuthenticationApplication} from "../../authentication/authentication.application";
 
@@ -13,12 +13,14 @@ import {AuthenticationApplication} from "../../authentication/authentication.app
 })
 export class SpinnerComponent {
   private readonly authApplication: AuthenticationApplication = inject(AuthenticationApplication);
+  loadingMessage: InputSignal<string> = input.required()
 
   /**
    * To check if the application is loading.
    */
   get isLoading(): boolean {
-    return this.authApplication.isLoading;
+    console.info(this.loadingMessage() + ' : ' + this.authApplication.isLoading())
+    return this.authApplication.isLoading();
   }
 
 }

@@ -25,6 +25,10 @@
           <p>Und genießen!</p>
         </mat-card-title>
         <mat-card-content>
+
+          <!-- Loading Spinner -->
+          <app-spinner class="spinner" [loadingMessage]="spinnerText"/>
+
           <form [formGroup]="loginForm">
             <!-- Email (username) input -->
             <mat-form-field appearance="outline" id="email">

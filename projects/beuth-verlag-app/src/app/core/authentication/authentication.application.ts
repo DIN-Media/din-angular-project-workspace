@@ -1,4 +1,4 @@
-import {inject, Injectable} from "@angular/core";
+import {inject, Injectable, Signal} from "@angular/core";
 import {AuthenticationStore} from "../../store";
 
 @Injectable({providedIn: 'root'})
@@ -8,7 +8,7 @@ export class AuthenticationApplication {
   /**
    * To get isLoading state to show loading spinner
    */
-  get isLoading(): boolean {
+  get isLoading(): Signal<boolean> {
     return this.store.isLoading();
   }
 

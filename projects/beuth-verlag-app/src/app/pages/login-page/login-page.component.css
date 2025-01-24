@@ -126,6 +126,14 @@ mat-card-content {
     padding: 0;
 }
 
+.spinner {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 30px;
+}
+
 mat-form-field {
   width: 100%;
 }

@@ -2,7 +2,7 @@ import {User} from "../models/user.index";
 import {patchState, signalStore, withComputed, withMethods, withState} from "@ngrx/signals";
 import {rxMethod} from "@ngrx/signals/rxjs-interop";
 import {concatMap, pipe, tap} from "rxjs";
-import {computed, inject} from "@angular/core";
+import {computed, inject, signal, WritableSignal} from "@angular/core";
 import {AuthenticationInfrastructure} from "../core/authentication/authentication.infrastructure";
 import {tapResponse} from "@ngrx/operators";
 import {Router} from "@angular/router";
@@ -17,7 +17,7 @@ import {RoutingPaths} from "../core/const";
  */
 export interface AuthenticationState {
   user: User | undefined | null,
-  isLoading: boolean;
+  isLoading: WritableSignal<boolean>;
 }
 
 export type AuthenticateType = {
@@ -33,7 +33,7 @@ export type AuthenticateType = {
  */
 const initialState: AuthenticationState = {
   user: undefined,
-  isLoading: false
+  isLoading: signal<boolean>(false)
 }
 
 
@@ -60,7 +60,7 @@ export const AuthenticationStore = signalStore(
   withComputed((
     store,
     session: SessionService = inject(SessionService)) => ({
-    isAuthenticated: computed((): boolean => session.isAuthenticated()),
+    isAuthenticated: computed<boolean>((): boolean => session.isAuthenticated()),
   })),
 
   /**
@@ -73,15 +73,15 @@ export const AuthenticationStore = signalStore(
     {
       logIn: rxMethod<AuthenticateType>(
         pipe(
-          tap(() => patchState(store, {isLoading: true})),
+          tap(() => patchState(store, {isLoading: signal<boolean>(true)})),
           concatMap((input: AuthenticateType) => {
             return infra.login(input.username, input.password).pipe(
               tapResponse({
                 next: (user: User): void => {
-                  patchState(store, {user: user, isLoading: false})
+                  patchState(store, {user: user, isLoading: signal<boolean>(false)})
                   router.navigate([RoutingPaths.HOME]).then()
                 },
-                error: () => patchState(store, {user: undefined, isLoading: false})
+                error: () => patchState(store, {user: undefined, isLoading: signal<boolean>(false)})
               })
             )
           })
@@ -100,14 +100,14 @@ export const AuthenticationStore = signalStore(
     {
       logOut: rxMethod<void>(
         pipe(
-          tap(() => patchState(store, {isLoading: true})),
+          tap(() => patchState(store, {isLoading: signal<boolean>(true)})),
           concatMap(() => infra.logout().pipe(
             tapResponse({
               next: (): void => {
-                patchState(store, {user: undefined, isLoading: false})
+                patchState(store, {user: undefined, isLoading: signal<boolean>(false)})
                 router.navigate([RoutingPaths.AUTH_LOGIN]).then()
               },
-              error: () => patchState(store, {user: undefined, isLoading: false})
+              error: () => patchState(store, {user: undefined, isLoading: signal<boolean>(false)})
             })
           ))
         )

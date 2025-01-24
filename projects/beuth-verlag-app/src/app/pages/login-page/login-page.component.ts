@@ -34,6 +34,7 @@ export class LoginPageComponent {
   readonly hyperlinks: Hyperlink[] = dataset as Hyperlink[];
   readonly resetPasswordText: string = "Reset Password";
   readonly inputNames: string[] = ['email', 'password']
+  readonly spinnerText: string = 'Login loading'
 
   emailErrorMessage: string | undefined = ErrorMessage.EMAIL_REQUIRED;
   passwordErrorMessage: string | undefined = ErrorMessage.PASSWORD_REQUIRED;
